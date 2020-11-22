@@ -12,7 +12,7 @@ import io.ktor.freemarker.FreeMarkerContent
 import freemarker.cache.ClassTemplateLoader
 
 fun Application.main() {
-    val complimentGenerator = ComplimentGenerator("./src/main/resources/compliments.txt")
+    val complimentGenerator = ComplimentGenerator("compliments.txt")
 
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
