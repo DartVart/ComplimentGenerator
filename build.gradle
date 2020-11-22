@@ -1,8 +1,12 @@
 plugins {
+    id 'application'
     id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
     id "io.gitlab.arturbosch.detekt" version "$detekt_version"
+    id "com.github.johnrengelman.shadow" version "$shadow_jar_version"
 }
 
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'application'
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -26,9 +30,19 @@ detekt {
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = "11"
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = "11"
     }
+}
+
+application {
+    mainClassName = "MainApplicationKt"
+}
+
+shadowJar {
+    archiveBaseName.set('compliment-generator')
+    archiveClassifier.set('')
+    archiveVersion.set('')
 }
