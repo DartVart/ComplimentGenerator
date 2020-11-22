@@ -1,5 +1,4 @@
 import java.io.FileNotFoundException
-import kotlin.random.Random
 
 /**
  * Generates compliments from a file.
@@ -7,16 +6,13 @@ import kotlin.random.Random
  * @param pathToFileWithCompliments is relative to the 'src/main/resources' folder
  * */
 class ComplimentGenerator(pathToFileWithCompliments: String) {
-    private var availableCompliments: List<String>
+    private var availableCompliments: List<Compliment>
 
     init {
         val fileWithCompliments = javaClass.getResource(pathToFileWithCompliments)
             ?: throw FileNotFoundException("File \"${pathToFileWithCompliments}\" not found")
-        availableCompliments = fileWithCompliments.readText().split('\n')
+        availableCompliments = fileWithCompliments.readText().split('\n').map { Compliment(it) }
     }
 
-    fun getCompliment(): String {
-        val randomIndex = Random.nextInt(availableCompliments.size)
-        return availableCompliments[randomIndex]
-    }
+    fun getCompliment() = availableCompliments.random()
 }
