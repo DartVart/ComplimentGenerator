@@ -1,8 +1,12 @@
 plugins {
+    id 'application'
     id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
     id "io.gitlab.arturbosch.detekt" version "$detekt_version"
+    id "com.github.johnrengelman.shadow" version "$shadow_jar_version"
 }
 
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'application'
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -14,6 +18,10 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$detekt_version"
+    compile "io.ktor:ktor-freemarker:$ktor_version"
+    compile "io.ktor:ktor-server-core:$ktor_version"
+    compile "io.ktor:ktor-server-netty:$ktor_version"
+    implementation "io.ktor:ktor-jackson:$ktor_version"
 }
 
 detekt {
@@ -23,9 +31,19 @@ detekt {
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = "11"
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.jvmTarget = "11"
     }
+}
+
+application {
+    mainClassName = "MainApplicationKt"
+}
+
+shadowJar {
+    archiveBaseName.set('compliment-generator')
+    archiveClassifier.set('')
+    archiveVersion.set('')
 }

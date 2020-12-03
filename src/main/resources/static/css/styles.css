@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    flex: 3;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    flex: 10;
+    background: #B9D8FF;
+    padding: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#getComplimentButton {
+    background: #6A89D9;
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border-color: #6A89D9;
+    outline:none;
+    text-decoration: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 15pt;
+    text-align: center;
+}
+
+#compliment {
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 12vh;
+    line-height: 12vh;
+    text-align: center;
+}
+
+h1 {
+    color: #242B30;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 60pt;
+    text-align: center;
+}
